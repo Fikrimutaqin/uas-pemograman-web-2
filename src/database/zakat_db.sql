@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Jul 2020 pada 09.36
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.2.27
+-- Generation Time: Jul 18, 2020 at 09:43 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_admin`
+-- Table structure for table `tb_admin`
 --
 
 CREATE TABLE `tb_admin` (
@@ -35,16 +34,17 @@ CREATE TABLE `tb_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_admin`
+-- Dumping data for table `tb_admin`
 --
 
 INSERT INTO `tb_admin` (`id_admin`, `username`, `password`) VALUES
-(1, 'ilhamdn', '12345678');
+(1, 'ilhamdn', '12345678'),
+(2, 'fikri12', 'fikri12');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_pembayaran_zakat`
+-- Table structure for table `tb_pembayaran_zakat`
 --
 
 CREATE TABLE `tb_pembayaran_zakat` (
@@ -60,19 +60,16 @@ CREATE TABLE `tb_pembayaran_zakat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_pembayaran_zakat`
+-- Dumping data for table `tb_pembayaran_zakat`
 --
 
 INSERT INTO `tb_pembayaran_zakat` (`id_pembayaran`, `id_admin`, `id_zakat`, `nominal`, `nama_lengkap`, `no_hp`, `alamat_email`, `nama_bank`, `no_rekening`) VALUES
-(7, 1, 3, 500000, 'Ilham Dwi Nugraha', '08870937758', 'ilham@gmail.com', 'BNI', 8825631),
-(9, 1, 1, 1400000, 'Hans Varian', '08125472593', 'hansvar@gmail.com', 'Mandiri', 222381623),
-(10, 1, 3, 1200000, 'Armanditto', '08974566723', 'ditto@ditto.com', 'UOB', 88745623),
-(11, 1, 2, 2100000, 'Febrian Sudimara', '089623243', 'febrian@gmail.com', 'BCA', 8572536);
+(12, 2, 1, 100000000, 'Dodi', '2312312', 'dodi@gmail.com', 'bca', 232132);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_zakat`
+-- Table structure for table `tb_zakat`
 --
 
 CREATE TABLE `tb_zakat` (
@@ -81,7 +78,7 @@ CREATE TABLE `tb_zakat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_zakat`
+-- Dumping data for table `tb_zakat`
 --
 
 INSERT INTO `tb_zakat` (`id_zakat`, `jenis_zakat`) VALUES
@@ -94,13 +91,13 @@ INSERT INTO `tb_zakat` (`id_zakat`, `jenis_zakat`) VALUES
 --
 
 --
--- Indeks untuk tabel `tb_admin`
+-- Indexes for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indeks untuk tabel `tb_pembayaran_zakat`
+-- Indexes for table `tb_pembayaran_zakat`
 --
 ALTER TABLE `tb_pembayaran_zakat`
   ADD PRIMARY KEY (`id_pembayaran`),
@@ -108,39 +105,39 @@ ALTER TABLE `tb_pembayaran_zakat`
   ADD KEY `id_zakat` (`id_zakat`);
 
 --
--- Indeks untuk tabel `tb_zakat`
+-- Indexes for table `tb_zakat`
 --
 ALTER TABLE `tb_zakat`
   ADD PRIMARY KEY (`id_zakat`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_admin`
+-- AUTO_INCREMENT for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_pembayaran_zakat`
+-- AUTO_INCREMENT for table `tb_pembayaran_zakat`
 --
 ALTER TABLE `tb_pembayaran_zakat`
-  MODIFY `id_pembayaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_pembayaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_zakat`
+-- AUTO_INCREMENT for table `tb_zakat`
 --
 ALTER TABLE `tb_zakat`
   MODIFY `id_zakat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tb_pembayaran_zakat`
+-- Constraints for table `tb_pembayaran_zakat`
 --
 ALTER TABLE `tb_pembayaran_zakat`
   ADD CONSTRAINT `tb_pembayaran_zakat_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `tb_admin` (`id_admin`),
